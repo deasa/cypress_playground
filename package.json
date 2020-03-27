@@ -6,7 +6,10 @@
   "dependencies": {
     "cypress": "^4.2.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "cypress-xpath": "^1.4.0",
+    "require": "^2.4.20"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

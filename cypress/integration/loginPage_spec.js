@@ -1,7 +1,4 @@
-'use strict';
-const xUsernameInput = "//input[preceding-sibling::label[text() = 'Username']][1]";
-const xPasswordInput = "//input[preceding-sibling::label[text() = 'Username']][1]/following-sibling::input";
-const xLoginButton = "//button[@label = 'Log In']";
+import('loginPage')
 
 describe('Login Page', () => {
     
@@ -18,23 +15,35 @@ describe('Login Page', () => {
     describe('Login Page _ login', () => {
         const validUserName = "ldaptest";
         const validPassword = "drowssap";
+        let alteredState = false;
 
         beforeEach(() => {
-            cy.reload(true);
+            if (alteredState) {
+                cy.reload(true);   
+                alteredState = false;             
+            }
         })
 
         it('can log in to application _ ldaptest', () => {
-            cy.xpath(`${xUsernameInput}`).type(validUserName);
-            cy.xpath(`${xPasswordInput}`).type(validPassword);
-            cy.xpath(`${xLoginButton}`).click();
+            EnterUsernamePassword(validUserName, validPassword);
+            // cy.xpath(`${xUsernameInput}`).type(validUserName).should('have.value', validUserName);
+            // cy.xpath(`${xPasswordInput}`).type(validPassword).should('have.value', validPassword);            
+            ClickLogInButton();
             cy.url().should('include', 'home');
             cy.contains('Welcome').should('contain.text', 'LDAP');
+            alteredState = true;
         });
+
         it('rejects invalid username', () => {
-            cy.xpath(`${xUsernameInput}`).type('invalidUsername');
-            cy.xpath(`${xPasswordInput}`).type(validPassword);
-            cy.xpath(`${xLoginButton}`).click();
+            EnterUsernamePassword('invalidUsername', validPassword);
+            ClickLogInButton();
             //expect(cy.get('.errorMessage').to.have.text('Confirm credentials are correct');
+            cy.get('.errorMessage').should('contain.text', 'Confirm credentials are correct');
+        });
+
+        it('rejects invalid password', () => {
+            EnterUsernamePassword('invalidUsername', validPassword);
+            ClickLogInButton();
             cy.get('.errorMessage').should('contain.text', 'Confirm credentials are correct');
         });
     });

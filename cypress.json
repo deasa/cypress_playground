@@ -1,4 +1,5 @@
 {
   "projectId": "9o1qx9",
-  "chromeWebSecurity": false
+  "chromeWebSecurity": false,
+  "baseUrl": "http://test.embr.biofiredx.net"
 }

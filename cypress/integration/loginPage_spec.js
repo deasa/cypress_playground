@@ -12,7 +12,9 @@ describe('The EMBR application', () => {
 
 describe('Login Page', () => {
     it('has all three login items visible on the page', () => {
-
+        cy.xpath(`${xUsernameInput}`).should('be.visible')
+        cy.xpath(`${xPasswordInput}`).should('be.visible');
+        cy.xpath(`${xLoginButton}`).should('be.visible');
     })
 })
 

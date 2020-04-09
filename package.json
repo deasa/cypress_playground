@@ -4,11 +4,12 @@
   "description": "sandbox for testing cypress",
   "main": "index.js",
   "dependencies": {
-    "cypress": "^4.2.0"
+    "cypress": "^4.3.0"
   },
   "devDependencies": {
     "cypress-xpath": "^1.4.0",
-    "require": "^2.4.20"
+    "require": "^2.4.20",
+    "minimist": ">=1.2.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

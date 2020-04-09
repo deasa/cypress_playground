@@ -1,28 +1,25 @@
-import * as LoginPage from './loginPage';
+//import * as LoginPage from './loginPage';
+
+import { LoginPage } from "./loginPage";
 
 describe('Login Page', () => {
-    
+
     it('successfully loads', () => {
         cy.visit('/');
     });
 
     it('has all three login items visible on the page', () => {
-        // cy.xpath(`${xUsernameInput}`).should('be.visible')
-        // cy.xpath(`${xPasswordInput}`).should('be.visible');
-        // cy.xpath(`${xLoginButton}`).should('be.visible');
+        cy.get("input[pinputtext]").should('be.visible');
+        cy.get("input[ppassword]").should('be.visible');
+        cy.get("button[label='Log In']").should('be.visible');
     });
 
     describe('Login Page _ login', () => {
         const validUserName = "ldaptest";
         const validPassword = "drowssap";
-        let alteredState = false;
 
         beforeEach(() => {
-            console.log("Is the login page initially loaded? " + LoginPage.PageIsLoaded)
-            if (alteredState) {
-                cy.reload(true);   
-                alteredState = false;             
-            }
+            cy.reload(true);           
         })
 
         it('can log in to application _ ldaptest', () => {
@@ -30,7 +27,6 @@ describe('Login Page', () => {
             LoginPage.ClickLogInButton();
             cy.url().should('include', 'home');
             cy.contains('Welcome').should('contain.text', 'LDAP');
-            alteredState = true;
         });
 
         it('rejects invalid username', () => {

@@ -2,15 +2,23 @@
 
 describe('Login Page', () => {
     beforeEach(function() {
+        console.log('in the before each!');
+        cy.server();
+        cy.route(/GetPwUrl/, "\"http://blah.pw.biofiredx.net/services/\"").as('getPWUrl');
         cy.visit('/');
+        cy.wait('@getPWUrl');
         cy.get('input[pinputtext]').as('usernameInput');
         cy.get('input[ppassword]').as('passwordInput');
         cy.get("button[label='Log In']").as('loginButton');
     });
 
-    it('successfully loads', () => {
+    it.only('successfully loads', () => {
         cy.get('@usernameInput').should('be.visible');
     });
+
+    it('Can hit a custom command', function() {
+        cy.printToConsole();
+    })
 
     it('has all three login items visible on the page', () => {
         cy.get('@usernameInput').should('be.visible')
@@ -23,9 +31,11 @@ describe('Login Page', () => {
         const validPassword = "drowssap";
 
         it('can log in to application _ ldaptest', () => {
+            // cy.route(/SecureVerifyWithGroups/).as('Esig');
             cy.get('@usernameInput').type(validUserName);
             cy.get('@passwordInput').type(validPassword);
             cy.get('@loginButton').click();
+            // cy.wait('@Esig');
             cy.url().should('include', 'home');
             cy.contains('Welcome').should('contain.text', 'LDAP');
         });

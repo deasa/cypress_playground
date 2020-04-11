@@ -28,7 +28,7 @@ describe('Login Page', () => {
             cy.get('@usernameInput').type(validUserName);
             cy.get('@passwordInput').type(validPassword);
             cy.get('@loginButton').click();
-            cy.wait('@getAllMbrs');
+            cy.wait('@getAllMbrs', {timeout: 60000});
             cy.url().should('include', 'home');
             cy.contains('Welcome').should('contain.text', 'LDAP');
         });

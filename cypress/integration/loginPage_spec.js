@@ -4,15 +4,18 @@ describe('Login Page', () => {
     beforeEach(function() {
         console.log('in the before each!');
         cy.server();
+        cy.fixture('ldapuser.json').as('ldapUser');
+        cy.route('POST', '/Embr/2.0//EmbrUserSecurity', 'fixture:ldapuser.json');
+        cy.route(/getAllMasterBatch/).as('getAllMbrs');
         cy.route(/GetPwUrl/, "\"http://blah.pw.biofiredx.net/services/\"").as('getPWUrl');
         cy.visit('/');
-        cy.wait('@getPWUrl');
+        // cy.wait('@getPWUrl');
         cy.get('input[pinputtext]').as('usernameInput');
         cy.get('input[ppassword]').as('passwordInput');
         cy.get("button[label='Log In']").as('loginButton');
     });
 
-    it.only('successfully loads', () => {
+    it('successfully loads', () => {
         cy.get('@usernameInput').should('be.visible');
     });
 
@@ -30,12 +33,11 @@ describe('Login Page', () => {
         const validUserName = "ldaptest";
         const validPassword = "drowssap";
 
-        it('can log in to application _ ldaptest', () => {
-            // cy.route(/SecureVerifyWithGroups/).as('Esig');
+        it.only('can log in to application _ ldaptest', () => {
             cy.get('@usernameInput').type(validUserName);
             cy.get('@passwordInput').type(validPassword);
             cy.get('@loginButton').click();
-            // cy.wait('@Esig');
+            cy.wait('@getAllMbrs', {timeout: 60000});
             cy.url().should('include', 'home');
             cy.contains('Welcome').should('contain.text', 'LDAP');
         });

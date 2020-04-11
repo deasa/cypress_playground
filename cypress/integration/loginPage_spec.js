@@ -5,7 +5,7 @@ describe('Login Page', () => {
         console.log('in the before each!');
         cy.server();
         cy.fixture('ldapuser.json').as('ldapUser');
-        cy.route('POST', '/Embr/2.0//EmbrUserSecurity', 'fixture:ldapuser.json');
+        cy.route('POST', '/ESig/SecureVerifyWithGroups', 'fixture:ldapuser.json');
         cy.route(/getAllMasterBatch/).as('getAllMbrs');
         cy.route(/GetPwUrl/, "\"http://blah.pw.biofiredx.net/services/\"").as('getPWUrl');
         cy.visit('/');

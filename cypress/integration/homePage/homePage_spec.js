@@ -10,12 +10,22 @@ describe('Home Page', () => {
             .visit('/')
             .then(() => {
                 cy.get("#EMBR_HomeTable tbody").as('homeTable');
-            })
-    })
+            });
+    });
 
-    it('clicking on the new MBR button results in prompt', () => {
+    //TC-EMBRUI0405-01
+    it('has the export, import, and create new buttons', function() {
+        cy.contains(/^Create New MBR$/).should('be.visible');
+        cy.contains(/^Create New MBR from File$/).should('be.visible');
+        cy.contains(/^Export Table/).should('be.visible');
+    });
+
+    //TC-EMBRUI0415-01
+    //TC-EMBRUI0875-01
+    it('clicking on the new MBR button results in prompt and can be closed', () => {
         cy.contains(/^Create New MBR$/).click().then(() => {
-            cy.get("p-dialog > div").should('be.visible').type('{esc}').should('not.exist');
+            cy.get("p-dialog > div").should('be.visible').as('dialog');
+            cy.get("span.pi.pi-times").click().should('not.exist');
         });
     });
 

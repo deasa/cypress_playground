@@ -1,0 +1,112 @@
+[
+    {
+        "PartNumber": "ASAY-SUB-0099-P",
+        "PartDescription": "DTT 1M",
+        "Revision": "001",
+        "DocumentName": "FA-300A",
+        "RevisionName": "Initial EMBR Release",
+        "ProductionVersion": "P001",
+        "Status": "Active",
+        "ID": 8
+    },
+    {
+        "PartNumber": "ASAY-SUB-0099-P",
+        "PartDescription": "DTT 1M",
+        "Revision": "001",
+        "DocumentName": "FA-300A",
+        "RevisionName": "Initial EMBR Release",
+        "ProductionVersion": "P002",
+        "Status": "Draft",
+        "ID": 8
+    },
+    {
+        "PartNumber": "ASAY-SUB-0099-P",
+        "PartDescription": "DTT 1M",
+        "Revision": "001",
+        "DocumentName": "FA-300A",
+        "RevisionName": "Initial EMBR Release",
+        "ProductionVersion": "P003",
+        "Status": "Inactive",
+        "ID": 8
+    },
+    {
+        "PartNumber": "ASAY-SUB-0099-P",
+        "PartDescription": "DTT 1M",
+        "Revision": "001",
+        "DocumentName": "FA-300A",
+        "RevisionName": "Initial EMBR Release",
+        "ProductionVersion": "P004",
+        "Status": "Pending",
+        "ID": 8
+    },
+    {
+        "PartNumber": "ASAY-SUB-0099-P",
+        "PartDescription": "DTT 1M",
+        "Revision": "001",
+        "DocumentName": "FA-300A",
+        "RevisionName": "Initial EMBR Release",
+        "ProductionVersion": "P005",
+        "Status": "Rejected",
+        "ID": 8
+    },
+    {
+        "PartNumber": "ASAY-SUB-0099-P",
+        "PartDescription": "DTT 1M",
+        "Revision": "001",
+        "DocumentName": "FA-300A",
+        "RevisionName": "Initial EMBR Release",
+        "ProductionVersion": "P006",
+        "Status": "Active",
+        "ID": 8
+    },
+    {
+        "PartNumber": "ASAY-SUB-0099-P",
+        "PartDescription": "DTT 1M",
+        "Revision": "001",
+        "DocumentName": "FA-300A",
+        "RevisionName": "Initial EMBR Release",
+        "ProductionVersion": "P007",
+        "Status": "Active",
+        "ID": 8
+    },
+    {
+        "PartNumber": "ASAY-SUB-0099-P",
+        "PartDescription": "DTT 1M",
+        "Revision": "001",
+        "DocumentName": "FA-300A",
+        "RevisionName": "Initial EMBR Release",
+        "ProductionVersion": "P008",
+        "Status": "Active",
+        "ID": 8
+    },
+    {
+        "PartNumber": "ASAY-SUB-0099-P",
+        "PartDescription": "DTT 1M",
+        "Revision": "001",
+        "DocumentName": "FA-300A",
+        "RevisionName": "Initial EMBR Release",
+        "ProductionVersion": "P009",
+        "Status": "Active",
+        "ID": 8
+    },
+    {
+        "PartNumber": "ASAY-SUB-0099-P",
+        "PartDescription": "DTT 1M",
+        "Revision": "001",
+        "DocumentName": "FA-300A",
+        "RevisionName": "Initial EMBR Release",
+        "ProductionVersion": "P010",
+        "Status": "Active",
+        "ID": 8
+    },
+    {
+        "PartNumber": "ASAY-SUB-0099-P",
+        "PartDescription": "DTT 1M",
+        "Revision": "001",
+        "DocumentName": "FA-300A",
+        "RevisionName": "Initial EMBR Release",
+        "ProductionVersion": "P011",
+        "Status": "Active",
+        "ID": 8
+    }
+]

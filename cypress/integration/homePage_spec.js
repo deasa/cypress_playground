@@ -1,15 +1,23 @@
 'use strict';
+const homeTable = "#EMBR_HomeTable tbody";
 
 describe('Home Page', () => {
-    beforeEach(function() {
+    before(function() {
         cy.loginAsAdmin();
-        console.log('hit home pages before each');
-        //need to stub login here. There is a currentUser in the localStorage that we need to get. 
-        //think we need to stub getallmbrs as well?
+        cy.server();
+        cy.route(/getAllMasterBatch/, 'fixture:allMBRsNoModules.json').as('getAllMbrs');
+        cy
+            .visit('/')
+            .then(() => {
+                cy.get("#EMBR_HomeTable tbody").as('homeTable');
+            })
     })
 
-    it('the home page is displayed', () => {
-        cy.visit('/home');
-        cy.get("a[routerlink='home']").should('be.visible');
+    it('clicking on the new MBR button results in prompt', () => {
+        cy.contains(/^Create New MBR$/).click().then(() => {
+            cy.get("p-dialog > div").should('be.visible').type('{esc}').should('not.exist');
+        });
     });
+
+    
 });

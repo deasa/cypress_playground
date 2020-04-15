@@ -1,26 +1,27 @@
 Cypress.Commands.add('loginAsAdmin', function() {
-    loginAs("Admin");
+    loginAs("Admin", "Admin");
 });
 
 Cypress.Commands.add('loginAsSupervisor', function() {
-    loginAs("Supervisor");
+    loginAs("Supervisor", "Supervisor");
 })
 
 Cypress.Commands.add('loginAsQa', function() {
-    loginAs("DocumentControl");
+    loginAs("DocumentControl", "QA");
 })
 
 Cypress.Commands.add('loginAsGeneric', function() {
-    loginAs("");
+    loginAs("", "Generic");
 })
 
-function loginAs(userType){
+function loginAs(userType, userName){
     console.log('logging in as ' + userType)
     let d = new Date;
     let nowDate = d.toISOString();
     cy.readFile('cypress/fixtures/ldapuser.json').then((str) => {
         str.Item["_dateGenerated"] = nowDate;
         str.Item["_accessLevel"] = userType;
+        str.Item.UserName = userName;
         window.localStorage.setItem('currentUser', JSON.stringify(str.Item));
     });
 }

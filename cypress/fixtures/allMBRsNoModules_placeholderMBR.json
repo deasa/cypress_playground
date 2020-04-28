@@ -1,0 +1,12 @@
+[
+    {
+        "PartNumber": "PartNumber Value",
+        "PartDescription": "PartDescription Value",
+        "Revision": "Revision Value",
+        "DocumentName": "DocumentName Value",
+        "RevisionName": "RevisionName Value",
+        "ProductionVersion": "ProductionVersion Value",
+        "Status": "Status Value",
+        "ID": 8
+    }
+]

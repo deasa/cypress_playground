@@ -18,7 +18,7 @@ function loginAs(userType, userName){
     console.log('logging in as ' + userType)
     let d = new Date;
     let nowDate = d.toISOString();
-    cy.readFile('cypress/fixtures/ldapuser.json').then((str) => {
+    cy.readFile('cypress/fixtures/ldapuser.json').then(function(str) {
         str.Item["_dateGenerated"] = nowDate;
         str.Item["_accessLevel"] = userType;
         str.Item.UserName = userName;

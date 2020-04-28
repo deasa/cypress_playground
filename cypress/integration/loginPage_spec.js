@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Login Page', () => {
+describe('Login Page', function() {
     beforeEach(function() {
         cy.server();
         cy.route(/getAllMasterBatch/, 'fixture:allMBRsNoModules.json').as('getAllMbrs');
@@ -10,21 +10,21 @@ describe('Login Page', () => {
         cy.get("button[label='Log In']").as('loginButton');
     });
 
-    it('successfully loads', () => {
+    it('successfully loads', function() {
         cy.get('@usernameInput').should('be.visible');
     });
 
-    it('has all three login items visible on the page', () => {
+    it('has all three login items visible on the page', function() {
         cy.get('@usernameInput').should('be.visible')
         cy.get('@passwordInput').should('be.visible');
         cy.get('@loginButton').should('be.visible');
     });
 
-    describe('Login Page _ login', () => {
+    describe('Login Page _ login', function() {
         const validUserName = "ldaptest";
         const validPassword = "drowssap";
 
-        it('can log in to application _ ldaptest', () => {
+        it('can log in to application _ ldaptest', function() {
             cy.get('@usernameInput').type(validUserName);
             cy.get('@passwordInput').type(validPassword);
             cy.get('@loginButton').click();
@@ -33,14 +33,14 @@ describe('Login Page', () => {
             cy.contains('Welcome').should('contain.text', 'LDAP');
         });
 
-        it('rejects invalid username', () => {
+        it('rejects invalid username', function() {
             cy.get('@usernameInput').type('badUsername');
             cy.get('@passwordInput').type(validPassword);
             cy.get('@loginButton').click();
             cy.get('.errorMessage').should('contain.text', 'Confirm credentials are correct');
         });
 
-        it('rejects invalid password', () => {
+        it('rejects invalid password', function() {
             cy.get('@usernameInput').type(validUserName);
             cy.get('@passwordInput').type('badPassword');
             cy.get('@loginButton').click();

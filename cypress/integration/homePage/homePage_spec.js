@@ -1,14 +1,14 @@
 'use strict';
 const homeTable = "#EMBR_HomeTable tbody";
 
-describe('Home Page', () => {
+describe('Home Page', function() {
     before(function() {
         cy.loginAsAdmin();
         cy.server();
         cy.route(/getAllMasterBatch/, 'fixture:allMBRsNoModules.json').as('getAllMbrs');
         cy
             .visit('/')
-            .then(() => {
+            .then(function() {
                 cy.get("#EMBR_HomeTable tbody").as('homeTable');
             });
     });
@@ -22,8 +22,8 @@ describe('Home Page', () => {
 
     //TC-EMBRUI0415-01
     //TC-EMBRUI0875-01
-    it('clicking on the new MBR button results in prompt and can be closed', () => {
-        cy.contains(/^Create New MBR$/).click().then(() => {
+    it('clicking on the new MBR button results in prompt and can be closed', function() {
+        cy.contains(/^Create New MBR$/).click().then(function() {
             cy.get("p-dialog > div").should('be.visible').as('dialog');
             cy.get("span.pi.pi-times").click().should('not.exist');
         });

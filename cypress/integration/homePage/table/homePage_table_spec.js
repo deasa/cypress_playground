@@ -50,14 +50,13 @@ describe('Home Page Table', function() {
     //TC-EMBRUI0630-02
     //TC-EMBRHL2010-01
     //TC-EMBRHL2010-02
-    it('has the correct status column filter dropdown values', function() {
-        cy.get("p-multiselect div[title]").click();
-
-        cy.get("p-multiselect li span[class='ng-star-inserted']").each(function($el, index, $list) {
-            console.log($el.text());
-        });
-            // .then(function(multiSelectElm) {
-            //     multiSelectElm.find("span");
-            // })
+    it.only('has the correct status column filter dropdown values', function() {
+        cy.get("p-multiselect div[title]").click().then(function() {
+            cy.contains('Draft').should('be.visible');
+            cy.contains('Pending').should('be.visible');
+            cy.contains('Rejected').should('be.visible');
+            cy.contains('Active').should('be.visible');
+            cy.contains('Inactive').should('be.visible');
+        })
     })
 });

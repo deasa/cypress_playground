@@ -1,13 +1,21 @@
 'use strict';
 
+const selectors = {
+    usernameInput: 'input[pinputtext]',
+    passwordInput: 'input[ppassword]',
+    loginButton: "button[label='Log In']",
+    errorMessage: "label[class='errorMessage']"
+}
+
 describe('Login Page', function() {
     beforeEach(function() {
         cy.server();
         cy.route(/getAllMasterBatch/, 'fixture:allMBRsNoModules.json').as('getAllMbrs');
+        cy.route(/VerifyAndGenerateJwt/).as('generateJwt');
         cy.visit('/');
-        cy.get('input[pinputtext]').as('usernameInput');
-        cy.get('input[ppassword]').as('passwordInput');
-        cy.get("button[label='Log In']").as('loginButton');
+        cy.get(selectors.usernameInput).as('usernameInput');
+        cy.get(selectors.passwordInput).as('passwordInput');
+        cy.get(selectors.loginButton).as('loginButton');
     });
 
     it('successfully loads', function() {
@@ -37,14 +45,14 @@ describe('Login Page', function() {
             cy.get('@usernameInput').type('badUsername');
             cy.get('@passwordInput').type(validPassword);
             cy.get('@loginButton').click();
-            cy.get('.errorMessage').should('contain.text', 'Confirm credentials are correct');
+            cy.get(selectors.errorMessage).should('contain.text', 'Failed to verify e-signature');
         });
 
         it('rejects invalid password', function() {
             cy.get('@usernameInput').type(validUserName);
             cy.get('@passwordInput').type('badPassword');
             cy.get('@loginButton').click();
-            cy.get('.errorMessage').should('contain.text', 'Confirm credentials are correct');
+            cy.get(selectors.errorMessage).should('contain.text', 'Failed to verify e-signature');
         });
 
         it('log in button not enabled until after username and password are entered', function() {

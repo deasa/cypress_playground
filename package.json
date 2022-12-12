@@ -8,7 +8,7 @@
     "mocha-teamcity-reporter": "^3.0.0"
   },
   "devDependencies": {
-    "cypress": "^4.7.0",
+    "cypress": "^4.12.1",
     "cypress-multi-reporters": "^1.4.0",
     "cypress-xpath": "^1.4.0",
     "minimist": ">=1.2.3",

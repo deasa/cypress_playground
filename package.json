@@ -4,7 +4,7 @@
   "description": "sandbox for testing cypress",
   "main": "index.js",
   "dependencies": {
-    "mocha": "^7.1.2",
+    "mocha": "^10.2.0",
     "mocha-teamcity-reporter": "^3.0.0"
   },
   "devDependencies": {
